@@ -1,0 +1,21 @@
+package org.learning.app
+ 
+import org.learning.model.Employee;
+ 
+rule "hire year validation greater than 2000"
+    when
+        m : Employee( hireYear >= 2000, hiredYear : hireYear )
+    then
+        System.out.println( hiredYear );
+        m.setMessage( "Your are eligible for this program!" );
+        update( m );
+end
+
+rule "hire year validation less than 2000"
+    when
+        m : Employee( hireYear < 2000, hiredYear : hireYear )
+    then
+        System.out.println( hiredYear );
+        m.setMessage( "Your are not eligible for this program!" );
+        update( m );
+end
